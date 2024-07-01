@@ -6,6 +6,8 @@
 - To update the prompt go to configs.py and update vision_prompt
 - To increase the frame size got to configs.py and update max_frames
 - To run the server, use the command uvicorn server:app --port 3000
+- I have used ngrok to run the code
+- To run the ngrok tunnel, use the command ngrok http 3000 --domain here-comes-the-ngrok-domain 
 
 # Requirement
 - fastapi
