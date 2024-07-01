@@ -17,6 +17,7 @@
 
 # Future idea
 - To implement google gemini vision video feature.
+- To handle audio and noises.
 
 # References
 - https://github.com/cbh123/narrator
