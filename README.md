@@ -9,6 +9,7 @@
 - I have used ngrok to run the code
 - To run the ngrok tunnel, use the command ngrok http 3000 --domain here-comes-the-ngrok-domain
 - vision.html file is used to stream the live video stream from the client to the server.  Narration will be shown for every 15 frames in the vision.html page itself.
+- Paste the ngrok domain in the configs.py
 
 # Requirement
 - fastapi
