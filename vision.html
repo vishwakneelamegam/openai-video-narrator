@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LLM Video Narrator</title>
+</head>
+<body>
+    <h1>LLM Video Narrator</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <br><br>
+    <p id="narration">Here comes the video narration</p>
+    <script>
+        var video = document.getElementById('video');
+        var narration = document.getElementById('narration');
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+                video.srcObject = stream;
+                video.play();
+                const url = window.location.href;
+                const urlObject = new URL(url);
+                const params = new URLSearchParams(urlObject.search);
+                var ws = new WebSocket("[paste_tunnel_url_here]/vision/");
+
+                ws.onopen = function (event) {
+                    console.log("WebSocket is open now.");
+                };
+
+                ws.onclose = function (event) {
+                    console.log("WebSocket is closed now.");
+                };
+
+                ws.onerror = function (event) {
+                    console.log("WebSocket error observed:", event);
+                };
+
+                ws.onmessage = function (event) {
+                    //console.log("WebSocket message received:", event.data);
+                    narration.innerText = event.data;
+                };
+
+                function sendFrame() {
+                    var canvas = document.createElement('canvas');
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    var ctx = canvas.getContext('2d');
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    var dataURL = canvas.toDataURL('image/jpeg');
+                    var base64Data = dataURL.replace('data:image/jpeg;base64,', '');
+                    ws.send(base64Data);
+                }
+
+                setInterval(sendFrame, 1000);
+            }).catch(function (err) {
+                console.log("Error accessing webcam: " + err);
+            });
+        }
+    </script>
+</body>
+</html>
