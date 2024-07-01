@@ -22,3 +22,4 @@
 # References
 - https://github.com/cbh123/narrator
 - https://youtu.be/wOEz5xRLaRA?si=yv0d1UBoTB9-hYSz
+- https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding
