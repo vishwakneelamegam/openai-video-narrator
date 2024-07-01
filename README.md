@@ -5,6 +5,7 @@
 - Provide your openai key and domain in the configs.py file
 - To update the prompt go to configs.py and update vision_prompt
 - To increase the frame size got to configs.py and update max_frames
+- To run the server, use the command uvicorn server:app --port 3000
 
 # Requirement
 - fastapi
