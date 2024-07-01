@@ -15,5 +15,9 @@
 - fastapi
 - openai
 
-# future idea
+# Future idea
 - To implement google gemini vision video feature.
+
+# References
+- https://github.com/cbh123/narrator
+- https://youtu.be/wOEz5xRLaRA?si=yv0d1UBoTB9-hYSz
